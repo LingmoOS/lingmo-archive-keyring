@@ -1,0 +1,31 @@
+Source: lingmo-archive-keyring
+Priority: important
+Section: misc
+Maintainer: Debian Release Team <packages@release.lingmo.org>
+Uploaders: Niels Thykier <niels@thykier.net>,
+ Jonathan Wiltshire <jmw@lingmo.org>,
+Build-Depends: debhelper (>= 10), jetring, gnupg
+Rules-Requires-Root: no
+Standards-Version: 4.6.0
+Vcs-Browser: https://salsa.lingmo.org/release-team/lingmo-archive-keyring
+Vcs-Git: https://salsa.lingmo.org/release-team/lingmo-archive-keyring.git
+
+Package: lingmo-archive-keyring
+Architecture: all
+Multi-Arch: foreign
+Depends: ${misc:Depends}
+Description: GnuPG archive keys of the Debian archive
+ The Debian project digitally signs its Release files. This package
+ contains the archive keys used for that.
+
+Package: lingmo-archive-keyring-udeb
+Package-Type: udeb
+Priority: optional
+Architecture: all
+Section: lingmo-installer
+Depends: ${misc:Depends}
+Recommends: gpgv-udeb
+Description: GnuPG keys of the Debian archive
+ The Debian project digitally signs its Release files. This package
+ contains the archive keys used for that, in a minimal form for use
+ in the installer.
