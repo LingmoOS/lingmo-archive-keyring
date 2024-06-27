@@ -1,3 +1,9 @@
+lingmo-archive-keyring (2024.5.1) unstable; urgency=medium
+
+  * Fixed build error.
+
+ -- Elysia <c.elysia@foxmail.com>  Thu, 27 Jun 2024 22:22:09 +0800
+
 lingmo-archive-keyring (2024.5) unstable; urgency=medium
 
   * Added two signing keys for repo and on for elysia.
