@@ -3,7 +3,7 @@ TMPRING := trusted.gpg/build-area
 
 GPG_OPTIONS := --no-options --no-default-keyring --no-auto-check-trustdb --trustdb-name ./trustdb.gpg
 
-build: verify-indices keyrings/lingmo-archive-keyring.gpg keyrings/lingmo-archive-removed-keys.gpg verify-results $(TRUSTED-LIST)
+build: verify-indices keyrings/lingmo-archive-keyring.gpg keyrings/lingmo-archive-removed-keys.gpg apt-trusted-asc/lingmo-archive-keyring.asc apt-trusted-asc/lingmo-archive-removed-keys.asc verify-results $(TRUSTED-LIST)
 
 verify-indices: keyrings/team-members.gpg
 	gpg ${GPG_OPTIONS} \
@@ -49,6 +49,12 @@ $(TRUSTED-LIST) :: trusted.gpg/lingmo-archive-%.gpg : active-keys/add-% active-k
 	gpg ${GPG_OPTIONS} --no-keyring --import-options import-export --import < $@ > $@.tmp
 	mv -f $@.tmp $@
 
+apt-trusted-asc/lingmo-archive-keyring.asc: keyrings/lingmo-archive-keyring.gpg
+	gpg ${GPG_OPTIONS} --armor --export --output $@ < $<
+
+apt-trusted-asc/lingmo-archive-removed-keys.asc: keyrings/lingmo-archive-removed-keys.gpg
+	gpg ${GPG_OPTIONS} --armor --export --output $@ < $<
+
 clean:
 	rm -f keyrings/lingmo-archive-keyring.gpg \
 		keyrings/lingmo-archive-keyring.gpg~ \
@@ -61,6 +67,8 @@ clean:
 		keyrings/team-members.gpg.lastchangeset
 	rm -rf $(TMPRING) trusted.gpg trustdb.gpg
 	rm -f keyrings/*.cache
+
+	rm -f apt-trusted-asc/*.asc
 
 install: build
 	install -d $(DESTDIR)/usr/share/keyrings/
