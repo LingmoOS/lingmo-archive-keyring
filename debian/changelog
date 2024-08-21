@@ -1,3 +1,9 @@
+lingmo-archive-keyring (2024.8.0+fix1) unstable; urgency=medium
+
+  * Added Hydrogen sigining key.
+
+ -- Elysia <c.elysia@foxmail.com>  Thu, 15 Aug 2024 10:20:00 +0800
+
 lingmo-archive-keyring (2024.5.1) unstable; urgency=medium
 
   * Fixed build error.
