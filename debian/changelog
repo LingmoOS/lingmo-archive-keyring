@@ -1,4 +1,4 @@
-lingmo-archive-keyring (2024.8.0) unstable; urgency=medium
+lingmo-archive-keyring (2024.8.0+fix1) unstable; urgency=medium
 
   * Added Hydrogen sigining key.
 
